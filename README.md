@@ -1,2 +1,2 @@
-# GhostTune Converter
- GhostTune Converter is a simple tool to extract audio from videos. Easily convert YouTube or local videos into high-quality audio files across popular formats. Enjoy a streamlined interface and flexible format options for creating your favorite tracks on the go!
+
+GhostTune Converter is a user-friendly application designed for seamless audio extraction from videos. Whether you're looking to convert YouTube videos into high-quality audio files or transform your local video collections into your favorite audio formats, GhostTune Converter makes it easy and efficient. With support for various audio formats and a sleek, intuitive interface, you'll be able to enjoy your music on the go. Empower your listening experience with GhostTune Converter—where your videos become your soundtrack!
