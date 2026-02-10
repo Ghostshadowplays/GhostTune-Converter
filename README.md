@@ -1,60 +1,70 @@
-# 🎵 GhostTune Converter – Technician’s Audio Altar
+# GhostTune Converter
 
-**Seamless audio extraction from video, built for creators, archivists, and digital ritualists.**  
-GhostTune Converter transforms your video library into high-quality audio formats with precision and ease.
+![GhostTune Logo](https://raw.githubusercontent.com/Ghostshadowplays/Ghostyware-Logo/main/GhostywareLogo.png)
 
----
+GhostTune Converter is a professional, high-performance media conversion utility built with Python and PyQt6. It allows users to download and convert YouTube content or local media files into various audio and video formats with ease.
 
-## 🎧 Key Features
+## Features
 
-- **YouTube & Local Video Conversion**  
-  Extract audio from online or offline videos with minimal effort.
+- **YouTube Integration**: Download and convert YouTube videos directly to your preferred format.
+- **Local Conversion**: Convert existing media files on your machine.
+- **Audio & Video Support**: Supports a wide range of formats (MP3, WAV, AAC, MP4, MKV, etc.).
+- **Professional UI**: Modern "Midnight" dark theme with a clean, intuitive interface.
+- **Real-time Feedback**: Progress bars and status updates for all operations.
+- **Process Cancellation**: Safely stop ongoing conversions at any time.
+- **HighDPI Support**: Scales correctly on high-resolution displays.
 
-- **Multi-Format Support**  
-  Convert to MP3, WAV, FLAC, and more—your soundtrack, your format.
+## Supported Formats
 
-- **Sleek, Intuitive Interface**  
-  Designed for clarity and speed. No clutter, just clean technician flow.
+- **Audio**: mp3, wav, aac, ogg, flac, m4a, opus, aiff, wma, mka
+- **Video**: mp4, mkv, mov, avi, webm, flv
 
-- **Batch Processing**  
-  Convert multiple files in one go—ritualize your entire archive.
+## Prerequisites
 
-- **Offline Mode**  
-  Works with local files even without internet access. Your vault stays yours.
+- **Python 3.8+**
+- **FFmpeg**: Required for media processing. The app will attempt to find a system installation or use `imageio-ffmpeg`.
 
-- **Audio Quality Control**  
-  Choose bitrate and format settings to match your listening ritual.
+## Installation
 
----
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ghostshadowplays/GhostTune-Converter.git
+   cd GhostTune-Converter
+   ```
 
-![GhostTune Converter GUI](https://github.com/user-attachments/assets/2c50814d-2a48-4d61-b9c8-584c80dde63f)
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   # Windows
+   .venv\Scripts\activate
+   # Linux/macOS
+   source .venv/bin/activate
+   ```
 
----
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 📜 License
+## Usage
 
-GhostTune Converter is licensed under the **GNU General Public License v3.0 (GPLv3)**.
+Run the application using Python:
 
-This means:
-- You’re free to use, modify, and distribute the tool.
-- Any derivative work must also remain open-source under GPLv3.
-- The technician legacy and ethical framework remain protected.
+```bash
+python "GhostTune Converter.py"
+```
 
-See the [LICENSE](./LICENSE) file for full terms.
+1. **Select Mode**: Choose between Audio or Video mode.
+2. **Input**:
+   - For **YouTube**: Paste the URL in the input field.
+   - For **Local**: Click "Convert Local File" to browse.
+3. **Format**: Select your desired output format from the dropdown.
+4. **Convert**: Click the conversion button and select your output destination.
 
----
+## Security & Disclaimer
 
-## 🧙 Mythos
+This tool is designed for **personal use only**. Downloading or converting copyrighted content without permission may violate terms of service and copyright laws. The developer is not responsible for any misuse of this tool.
 
-GhostTune isn’t just a converter—it’s a ritual forge.  
-Every extraction is a rite. Every format is a technician’s choice.  
-Built to honor earned mastery and empower creators to shape their own soundscape.
+## License
 
----
-
-## 🎥 Follow the Journey
-
-Join me on Twitch:  
-👉 [twitch.tv/ghostshadow_plays](https://www.twitch.tv/ghostshadow_plays)  
-We’re all learning—every conversion is a step toward technician mastery.
-
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,0 +1,10 @@
+yt-dlp
+PyQt6
+moviepy
+requests
+Pillow
+imageio-ffmpeg
+idna
+charset-normalizer
+certifi
+numpy<2
