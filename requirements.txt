@@ -1,4 +1,4 @@
-yt-dlp==2023.11.19
+yt-dlp==2024.10.22
 PyQt6==6.7.1
 moviepy==2.1.2
 requests==2.32.5
