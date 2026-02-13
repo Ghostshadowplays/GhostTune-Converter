@@ -37,4 +37,5 @@ jobs:
 
     - name: Security scan with Safety
       run: |
-        safety scan -r requirements.txt --offline --disable-telemetry --disable-api --policy-file .safety-policy.yml
+        # Safety check on requirements.txt
+        safety check -r requirements.txt
