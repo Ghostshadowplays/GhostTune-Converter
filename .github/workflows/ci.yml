@@ -38,4 +38,4 @@ jobs:
     - name: Security scan with Safety
       run: |
         # Safety check on requirements.txt
-        safety check -r requirements.txt
+        safety scan -r requirements.txt
