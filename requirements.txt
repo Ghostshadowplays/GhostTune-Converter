@@ -1,10 +1,10 @@
-yt-dlp==2025.12.03
+yt-dlp==2023.11.19.23
 PyQt6==6.7.1
 moviepy==2.1.2
-requests==2.32.3
+requests==2.32.5
 Pillow==11.1.0
 imageio-ffmpeg==0.5.1
-idna==3.10
-charset-normalizer==3.4.1
-certifi==2025.1.31
+idna==3.11
+charset-normalizer==3.4.4
+certifi==2026.1.4
 numpy==1.26.4
