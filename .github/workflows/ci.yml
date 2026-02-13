@@ -36,6 +36,7 @@ jobs:
         bandit -r . -x ./.venv
 
     - name: Security scan with Safety
+      env:
+        SAFETY_API_KEY: "disabled"
       run: |
-        # Safety check on requirements.txt
-        safety scan -r requirements.txt
+        safety scan -r requirements.txt --policy-file .safety-policy.yml
