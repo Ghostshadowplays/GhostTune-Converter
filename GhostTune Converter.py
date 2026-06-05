@@ -1,5 +1,22 @@
 import sys
 import os
+
+# --- PyInstaller Fix: Handle missing metadata for imageio/moviepy in frozen state ---
+if getattr(sys, 'frozen', False):
+    import importlib.metadata
+    _original_metadata_version = importlib.metadata.version
+    def _patched_metadata_version(package_name):
+        try:
+            return _original_metadata_version(package_name)
+        except importlib.metadata.PackageNotFoundError:
+            # Fallback versions for common problematic packages
+            fallbacks = {'imageio': '2.37.2', 'moviepy': '2.1.2'}
+            if package_name in fallbacks:
+                return fallbacks[package_name]
+            raise
+    importlib.metadata.version = _patched_metadata_version
+# ----------------------------------------------------------------------------------
+
 import re
 import logging
 import shutil

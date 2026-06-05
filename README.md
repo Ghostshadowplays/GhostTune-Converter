@@ -54,6 +54,16 @@ Run the application using Python:
 python "GhostTune Converter.py"
 ```
 
+### Building the Executable (Windows)
+
+To create a standalone `.exe` file, you can use the provided build script:
+
+```bash
+python build_exe.py
+```
+
+This will use PyInstaller to bundle the application into a single file in the `dist` folder. The script ensures all necessary metadata for `moviepy` and `imageio` is correctly included to prevent runtime errors.
+
 1. **Select Mode**: Choose between Audio or Video mode.
 2. **Input**:
    - For **YouTube**: Paste the URL in the input field.
