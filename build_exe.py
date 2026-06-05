@@ -17,6 +17,7 @@ def build():
     project_root = os.path.dirname(os.path.abspath(__file__))
     icon_path = os.path.join(project_root, "images", "icon.ico")
     images_dir = os.path.join(project_root, "images")
+    readme_path = os.path.join(project_root, "README.md")
 
     if not os.path.exists(icon_path):
         print(f"Error: Icon file not found at {icon_path}")
@@ -38,6 +39,7 @@ def build():
         "--name=GhostTuneConverter",
         f"--icon={icon_path}",
         f"--add-data={images_dir};images",
+        f"--add-data={readme_path};.",
         # Correctly collect metadata for packages that use importlib.metadata
         "--copy-metadata=imageio",
         "--copy-metadata=moviepy",
@@ -52,7 +54,7 @@ def build():
         subprocess.check_call(cmd)  # nosec B603
         print("\n" + "="*50)
         print("Build successful!")
-        print(f"Executable location: {os.path.join('dist', 'GhostTune Converter.exe')}")
+        print(f"Executable location: {os.path.join('dist', 'GhostTuneConverter.exe')}")
         print("="*50)
     except subprocess.CalledProcessError as e:
         print(f"\nBuild failed with exit code {e.returncode}")
