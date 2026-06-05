@@ -1,6 +1,15 @@
 import sys
 import os
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 # --- PyInstaller Fix: Handle missing metadata for imageio/moviepy in frozen state ---
 if getattr(sys, 'frozen', False):
     import importlib.metadata
@@ -268,6 +277,11 @@ class GhostTuneApp(QMainWindow):
         super().__init__()
         self.setWindowTitle("GhostTune Converter")
         self.setMinimumSize(550, 650)
+        
+        icon_path = resource_path(os.path.join("images", "icon.ico"))
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
+            
         self.apply_styles()
         
         self.init_ui()

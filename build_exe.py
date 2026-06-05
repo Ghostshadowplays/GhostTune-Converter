@@ -20,6 +20,8 @@ def build():
         "--onefile",
         "--windowed",
         "--name=GhostTune Converter",
+        "--icon=images/icon.ico",
+        "--add-data=images;images",
         # Correctly collect metadata for packages that use importlib.metadata
         "--copy-metadata=imageio",
         "--copy-metadata=moviepy",
