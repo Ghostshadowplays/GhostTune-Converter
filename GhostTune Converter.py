@@ -7,7 +7,7 @@ def resource_path(relative_path):
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
-        base_path = os.path.abspath(".")
+        base_path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_path, relative_path)
 
 # --- PyInstaller Fix: Handle missing metadata for imageio/moviepy in frozen state ---
@@ -696,7 +696,25 @@ class GhostTuneApp(QMainWindow):
 
 
 if __name__ == "__main__":
+    # Windows Taskbar Icon Fix: Ensure the icon shows up correctly on the taskbar
+    if os.name == 'nt':
+        import ctypes
+        try:
+            # Set a unique AppUserModelID for the process
+            myappid = 'ghostyware.ghosttune.converter.1.0'
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        except Exception as e:
+            logger.debug(f"Failed to set AppUserModelID: {e}")
+
     app = QApplication(sys.argv)
+    
+    # Set global application icon
+    icon_path = resource_path(os.path.join("images", "icon.ico"))
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
+    else:
+        logger.warning(f"Icon not found at: {icon_path}")
+
     window = GhostTuneApp()
     window.show()
     sys.exit(app.exec())
