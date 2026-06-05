@@ -8,5 +8,5 @@ imageio-ffmpeg==0.6.0
 idna==3.18
 charset-normalizer==3.4.7
 certifi==2026.5.20
-numpy==2.4.6
+numpy==2.2.6
 pyinstaller==6.20.0
