@@ -5,10 +5,15 @@ def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     except Exception:
         base_path = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(base_path, relative_path)
+    
+    path = os.path.join(base_path, relative_path)
+    if not os.path.exists(path):
+        # Fallback to local path if frozen path fails
+        path = os.path.join(os.path.abspath("."), relative_path)
+    return os.path.normpath(path)
 
 # --- PyInstaller Fix: Handle missing metadata for imageio/moviepy in frozen state ---
 if getattr(sys, 'frozen', False):
@@ -279,8 +284,13 @@ class GhostTuneApp(QMainWindow):
         self.setMinimumSize(550, 650)
         
         icon_path = resource_path(os.path.join("images", "icon.ico"))
+        if not os.path.exists(icon_path):
+            icon_path = resource_path(os.path.join("images", "image_1.png"))
+            
         if os.path.exists(icon_path):
             self.setWindowIcon(QIcon(icon_path))
+        else:
+            logger.warning("Main window icon file not found.")
             
         self.apply_styles()
         
@@ -710,10 +720,14 @@ if __name__ == "__main__":
     
     # Set global application icon
     icon_path = resource_path(os.path.join("images", "icon.ico"))
+    if not os.path.exists(icon_path):
+        icon_path = resource_path(os.path.join("images", "image_1.png"))
+
     if os.path.exists(icon_path):
         app.setWindowIcon(QIcon(icon_path))
+        logger.info(f"Application icon set from: {icon_path}")
     else:
-        logger.warning(f"Icon not found at: {icon_path}")
+        logger.warning(f"Application icon not found at: {icon_path}")
 
     window = GhostTuneApp()
     window.show()

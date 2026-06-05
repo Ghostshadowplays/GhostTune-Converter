@@ -13,6 +13,11 @@ def build():
     print("Checking/Installing build dependencies...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])  # nosec B603
 
+    # Ensure paths are absolute for PyInstaller
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    icon_path = os.path.join(project_root, "images", "icon.ico")
+    images_dir = os.path.join(project_root, "images")
+
     # Base PyInstaller command
     cmd = [
         sys.executable, "-m", "PyInstaller",
@@ -20,8 +25,8 @@ def build():
         "--onefile",
         "--windowed",
         "--name=GhostTune Converter",
-        "--icon=images/icon.ico",
-        "--add-data=images;images",
+        f"--icon={icon_path}",
+        f"--add-data={images_dir};images",
         # Correctly collect metadata for packages that use importlib.metadata
         "--copy-metadata=imageio",
         "--copy-metadata=moviepy",
