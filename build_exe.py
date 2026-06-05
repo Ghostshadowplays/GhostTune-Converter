@@ -18,13 +18,24 @@ def build():
     icon_path = os.path.join(project_root, "images", "icon.ico")
     images_dir = os.path.join(project_root, "images")
 
+    if not os.path.exists(icon_path):
+        print(f"Error: Icon file not found at {icon_path}")
+        sys.exit(1)
+
+    # Clean up previous build artifacts
+    import shutil
+    for folder in ['build', 'dist']:
+        if os.path.exists(folder):
+            print(f"Cleaning up {folder}...")
+            shutil.rmtree(folder)
+
     # Base PyInstaller command
     cmd = [
         sys.executable, "-m", "PyInstaller",
         "--noconfirm",
         "--onefile",
         "--windowed",
-        "--name=GhostTune Converter",
+        "--name=GhostTuneConverter",
         f"--icon={icon_path}",
         f"--add-data={images_dir};images",
         # Correctly collect metadata for packages that use importlib.metadata

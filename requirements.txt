@@ -10,3 +10,4 @@ charset-normalizer==3.4.7
 certifi==2026.5.20
 numpy==2.2.6
 pyinstaller==6.20.0
+pefile==2024.8.26
