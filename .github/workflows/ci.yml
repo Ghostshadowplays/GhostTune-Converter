@@ -37,5 +37,5 @@ jobs:
 
     - name: Security scan with Safety
       run: |
-        # Safety scan on requirements.txt using policy file to ignore unavoidable vulnerabilities
-        python -m safety scan --requirements requirements.txt --policy-file .safety-policy.yml --stage cicd
+        # Safety check on requirements.txt using policy file to ignore unavoidable vulnerabilities
+        python -m safety check -r requirements.txt --policy-file .safety-policy.yml
