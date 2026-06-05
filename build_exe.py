@@ -1,4 +1,4 @@
-import subprocess
+import subprocess  # nosec B404
 import sys
 import os
 
@@ -11,7 +11,7 @@ def build():
     
     # Ensure dependencies are installed
     print("Checking/Installing build dependencies...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])  # nosec B603
 
     # Base PyInstaller command
     cmd = [
@@ -31,7 +31,7 @@ def build():
     
     print(f"\nRunning command: {' '.join(cmd)}")
     try:
-        subprocess.check_call(cmd)
+        subprocess.check_call(cmd)  # nosec B603
         print("\n" + "="*50)
         print("Build successful!")
         print(f"Executable location: {os.path.join('dist', 'GhostTune Converter.exe')}")
