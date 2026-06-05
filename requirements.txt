@@ -3,7 +3,7 @@ PyQt6==6.11.0
 moviepy==2.2.1
 imageio==2.37.3
 requests==2.34.2
-Pillow==12.2.0
+Pillow==11.3.0
 imageio-ffmpeg==0.6.0
 idna==3.18
 charset-normalizer==3.4.7

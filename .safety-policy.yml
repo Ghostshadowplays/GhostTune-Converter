@@ -1,0 +1,16 @@
+# Safety Security Configuration file
+# Ignoring Pillow vulnerabilities that are unavoidable due to moviepy 2.2.1 dependency constraints (pillow < 12.0)
+security:
+  ignore-vulnerabilities:
+    95894:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
+    95896:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
+    93093:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
+    95895:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
+    86269:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
+    95893:
+      reason: "Blocked by moviepy 2.2.1 which requires pillow < 12.0"
