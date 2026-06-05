@@ -10,7 +10,7 @@ if getattr(sys, 'frozen', False):
             return _original_metadata_version(package_name)
         except importlib.metadata.PackageNotFoundError:
             # Fallback versions for common problematic packages
-            fallbacks = {'imageio': '2.37.2', 'moviepy': '2.1.2'}
+            fallbacks = {'imageio': '2.37.3', 'moviepy': '2.2.1'}
             if package_name in fallbacks:
                 return fallbacks[package_name]
             raise
