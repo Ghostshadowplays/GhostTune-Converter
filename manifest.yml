@@ -1,0 +1,27 @@
+id: ghostyware.ghosttune.converter
+name: GhostTune Converter
+version: 1.0.0
+author: Ghostshadowplays
+publisher: Ghostyware
+description: >-
+  A professional, high-performance media conversion utility built with Python and PyQt6.
+  Supports downloading and converting YouTube content or local media files into various 
+  audio and video formats like MP3, WAV, MP4, and MKV.
+tagline: Advanced Media Converter for YouTube and Local Files
+category: Multimedia
+license: MIT
+icon: images/icon.ico
+logo: https://raw.githubusercontent.com/Ghostshadowplays/Ghostyware-Logo/main/GhostywareLogo.png
+repository: https://github.com/Ghostshadowplays/GhostTune-Converter
+executable: dist/GhostTuneConverter.exe
+sha256: "PENDING_BUILD" # Generate using: Get-FileHash dist/GhostTuneConverter.exe | Select-Object -ExpandProperty Hash
+platforms:
+  - windows
+requirements:
+  - ffmpeg
+features:
+  - YouTube Integration (yt-dlp)
+  - Local Media Conversion (moviepy)
+  - Multiple Format Support (Audio & Video)
+  - Modern "Midnight" Dark Theme
+  - Progress Tracking & Cancellation
