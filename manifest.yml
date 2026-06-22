@@ -1,27 +1,34 @@
-id: ghostyware.ghosttune.converter
-name: GhostTune Converter
-version: 1.0.0
-author: Ghostshadowplays
-publisher: Ghostyware
-description: >-
+# WinGet Singleton Manifest v1.6.0
+PackageIdentifier: ghostyware.ghosttune.converter
+PackageVersion: 1.0.0
+PackageName: GhostTune Converter
+Publisher: Ghostyware
+Author: Ghostshadowplays
+License: MIT
+PackageLocale: en-US
+ShortDescription: Advanced Media Converter for YouTube and Local Files
+Description: >-
   A professional, high-performance media conversion utility built with Python and PyQt6.
   Supports downloading and converting YouTube content or local media files into various 
-  audio and video formats like MP3, WAV, MP4, and MKV.
-tagline: Advanced Media Converter for YouTube and Local Files
-category: Multimedia
-license: MIT
-icon: images/icon.ico
-logo: https://raw.githubusercontent.com/Ghostshadowplays/Ghostyware-Logo/main/GhostywareLogo.png
-repository: https://github.com/Ghostshadowplays/GhostTune-Converter
-executable: dist/GhostTuneConverter.exe
-sha256: "PENDING_BUILD" # Generate using: Get-FileHash dist/GhostTuneConverter.exe | Select-Object -ExpandProperty Hash
-platforms:
-  - windows
-requirements:
-  - ffmpeg
-features:
+  audio and video formats like MP3, WAV, MP4, and MKV. Requires FFmpeg for media processing.
+
+  Features:
   - YouTube Integration (yt-dlp)
   - Local Media Conversion (moviepy)
   - Multiple Format Support (Audio & Video)
   - Modern "Midnight" Dark Theme
   - Progress Tracking & Cancellation
+PackageUrl: https://github.com/Ghostshadowplays/GhostTune-Converter
+Tags:
+  - multimedia
+  - youtube-downloader
+  - converter
+  - python
+  - pyqt6
+Installers:
+  - Architecture: x64
+    InstallerType: portable
+    InstallerUrl: https://github.com/Ghostshadowplays/GhostTune-Converter/releases/download/v1.0.0/GhostTuneConverter.exe
+    InstallerSha256: 0000000000000000000000000000000000000000000000000000000000000000 # Generate using: Get-FileHash dist/GhostTuneConverter.exe | Select-Object -ExpandProperty Hash
+ManifestType: singleton
+ManifestVersion: 1.6.0
