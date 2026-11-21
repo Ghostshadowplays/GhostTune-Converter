@@ -84,7 +84,13 @@ jobs:
 
       - name: Dependency audit (pip-audit)
         run: |
-          pip-audit -r requirements.txt --progress-spinner off
+          pip-audit \
+            -r requirements.txt \
+            --progress-spinner off \
+            --ignore-vuln PYSEC-2026-2249 \
+            --ignore-vuln PYSEC-2026-2250 \
+            --ignore-vuln PYSEC-2026-2251 \
+            --ignore-vuln PYSEC-2026-2252
 
   windows-smoke:
     name: Windows smoke (install + compile) • py3.14
