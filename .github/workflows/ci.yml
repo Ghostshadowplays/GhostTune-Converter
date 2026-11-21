@@ -48,7 +48,9 @@ jobs:
       - name: Security scan with Safety
         continue-on-error: true
         run: |
-          safety scan --policy-file .safety-policy.yml
+          safety scan \
+            --policy-file .safety-policy.yml \
+            --non-interactive
 
       - name: Dependency Information
         if: always()
