@@ -63,7 +63,7 @@ jobs:
       shell: powershell
       run: |
           Get-AuthenticodeSignature `
-            dist\GhostyTools-Windows-x64.exe | Format-List
+            dist\GhostTuneConverter.exe | Format-List
             
 
     - name: Upload Artifact
