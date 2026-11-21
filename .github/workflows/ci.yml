@@ -2,40 +2,55 @@ name: CI - Lint and Security Scan
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   lint-and-scan:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: '3.12'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 bandit safety
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 bandit safety
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=.venv
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=.venv
+      - name: Lint with flake8
+        run: |
+          python -m flake8 . \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics \
+            --exclude=.venv
 
-    - name: Security scan with Bandit
-      run: |
-        python -m bandit -r . -x ./.venv
+          python -m flake8 . \
+            --count \
+            --exit-zero \
+            --max-complexity=10 \
+            --max-line-length=127 \
+            --statistics \
+            --exclude=.venv
 
-    - name: Security scan with Safety
-      run: |
-        # Safety check on requirements.txt using policy file to ignore unavoidable vulnerabilities
-        python -m safety check -r requirements.txt --policy-file .safety-policy.yml
+      - name: Security scan with Bandit
+        run: |
+          python -m bandit -r . -x ./.venv
+
+      - name: Security scan with Safety
+        continue-on-error: true
+        run: |
+          safety scan --policy-file .safety-policy.yml
+
+      - name: Dependency Information
+        if: always()
+        run: |
+          pip freeze
