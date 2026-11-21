@@ -122,10 +122,14 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import importlib
-          for mod in ("PyQt6", "psutil", "cryptography", "speedtest"):
-              importlib.import_module(mod)
-          print("Imports OK")
+          import yt_dlp
+          import requests
+          import imageio
+          import numpy
+          from PIL import Image
+          from moviepy import VideoFileClip
+      
+          print("GhostTune imports OK")
           PY
 
       - name: Compile check
