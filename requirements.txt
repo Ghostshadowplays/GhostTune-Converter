@@ -3,7 +3,7 @@ PyQt6==6.11.0
 moviepy==2.2.1
 imageio==2.37.3
 requests==2.34.2
-Pillow==11.3.0
+Pillow==13.0.0
 imageio-ffmpeg==0.8.1
 numpy==2.2.6
 pyinstaller==6.22.3
