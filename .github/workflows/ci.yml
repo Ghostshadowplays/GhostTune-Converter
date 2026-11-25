@@ -22,19 +22,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.12", "3.14"]
+        python-version: ["3.12", "3.13"]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Cache pip
-        uses: actions/cache@v6
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
@@ -64,7 +64,7 @@ jobs:
       - name: Bandit (fail on High severity, high confidence)
         run: |
           set -e
-          bandit -q -r src main.py "Ghosty Tools.py" -lll -o bandit-report.txt --format txt || true
+          bandit -q -r src main.py "GhostTune Converter.py" -lll -o bandit-report.txt --format txt || true
           if grep -E "Severity:\s*HIGH" bandit-report.txt >/dev/null 2>&1; then
             echo "High severity Bandit findings detected" >&2
             cat bandit-report.txt
@@ -72,7 +72,7 @@ jobs:
           fi
 
       - name: Upload Bandit report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: bandit-report-py${{ matrix.python-version }}
           path: bandit-report.txt
@@ -88,7 +88,7 @@ jobs:
           pip-audit -r requirements.txt --progress-spinner off | tee pip-audit.txt
       
       - name: Upload pip-audit report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: pip-audit-report
           path: pip-audit.txt
@@ -98,15 +98,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.14"
+          python-version: "3.13"
 
       - name: Cache pip
-        uses: actions/cache@v6
+        uses: actions/cache@v4
         with:
           path: ~\AppData\Local\pip\Cache
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
@@ -122,6 +122,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import PyQt6
           import yt_dlp
           import requests
           import imageio
