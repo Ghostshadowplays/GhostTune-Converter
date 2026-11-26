@@ -1,5 +1,5 @@
 # GhostTune Converter
-
+![Security & Quality Audit](https://github.com/Ghostshadowplays/Ghosty-Tools/actions/workflows/security-audit.yml/badge.svg)
 ![GhostTune Logo](https://raw.githubusercontent.com/Ghostshadowplays/Ghostyware-Logo/main/GhostywareLogo.png)
 
 GhostTune Converter is a professional, high-performance media conversion utility built with Python and PyQt6. It allows users to download and convert YouTube content or local media files into various audio and video formats with ease.
